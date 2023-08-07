@@ -1,0 +1,42 @@
+@if ($typeResponsive==1) {
+    // Звичайний чуйний контейнер
+    [class*="__container"]{
+        @if ($maxWidthContainer > 0) {
+            @if ($containerPadding > 0) {
+                max-width: rem($maxWidthContainer + $containerPadding);
+                padding: 0 rem(math.div($containerPadding, 2));
+            } @else {
+                max-width: rem($maxWidthContainer);
+            }
+            box-sizing: content-box;
+            margin: 0 auto;
+        } @else {
+            @if ($containerPadding > 0) {
+                padding: 0 rem(math.div($containerPadding, 2));
+            }
+        }
+    }
+} @else if ($typeResponsive==0) {
+    // Чуйний контейнер за допомогою media breakpoints
+    [class*="__container"]{
+        margin: 0 auto;
+        @if ($maxWidthContainer > 0) {
+            max-width: rem($maxWidthContainer);
+            box-sizing: content-box;
+        } @else {
+            @if ($containerPadding > 0) {
+                padding: 0 rem(math.div($containerPadding, 2));
+            }
+        }
+        @media (max-width: $pc){
+            max-width: rem(970); 
+        }
+        @media (max-width: $tablet){
+            max-width: rem(750); 
+        }    
+        @media (max-width: $mobile){
+            margin: 0 rem(math.div($containerPadding, 2));
+            padding: 0;
+        }
+    }
+}

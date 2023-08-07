@@ -1,0 +1,92 @@
+@use "sass:math";
+// Default font-size in brouwser
+$defaultFontSize: 16;
+
+//========================================================================================================================================================================================================================================================================================
+// Convert px to rem (example rem(16) -> 1rem)
+@function rem($value) {
+    $remValue: math.div($value, $defaultFontSize)+rem;
+    @return $remValue;
+}
+
+// Convert px to rem value (example rem(16) -> 1) 
+@function remValue($value) {
+    $remValue: math.div($value, $defaultFontSize);
+    @return $remValue;
+}
+
+// Convert px to em value for media breakpoints (example em(16) -> 1em)
+@function em($value) {
+    $remValue: math.div($value, $defaultFontSize)+em;
+    @return $remValue;
+}
+
+//========================================================================================================================================================================================================================================================================================
+
+//========================================================================================================================================================================================================================================================================================
+// Adaptive Value in px
+@mixin adaptValuePx($property, $startSize, $lastSize, $type: 1) {
+    $diffSize: $startSize - $lastSize;
+
+    @if $type==1 {
+        // Тільки якщо менше контейнера
+        #{$property}: #{$startSize}+px;
+
+        @media (max-width: em($maxWidthContainer)) {
+            #{$property}: calc(#{$lastSize + px} + #{$diffSize} * ((100vw - #{$minWidth}px) / #{$maxWidthContainer - $minWidth}))
+        }
+    }
+
+    @else if $type==2 {
+        // Тільки якщо більше контейнера
+        #{$property}: #{$startSize}+px;
+
+        @media (min-width: em($maxWidthContainer)) {
+            #{$property}: calc(#{$lastSize + px} + #{$diffSize} * ((100vw - #{$minWidth}px) / #{$maxWidth - $minWidth}))
+        }
+    }
+
+    @else {
+        // Завжди
+        #{$property}: calc(#{$lastSize + px} + #{$diffSize} * ((100vw - #{$minWidth}px) / #{$maxWidth - $minWidth}))
+    }
+}
+
+// Adaptive Value in rem
+@mixin adaptValue($property, $startSize, $lastSize, $maxWidhtBlock: $maxWidthContainer, $minWidhtBlock: $minWidth, $type: 0) {
+    $diffSize: remValue($startSize - $lastSize);
+
+    @if $type==1 {
+        // Тільки якщо менше контейнера
+        #{$property}: rem($startSize);
+
+        @media (max-width: em($maxWidhtBlock)) {
+            #{$property}: calc(#{rem($lastSize)} + #{$diffSize} * ((100vw - #{rem($minWidhtBlock)}) / #{remValue($maxWidhtBlock - $minWidhtBlock)}))
+        }
+
+        @media (max-width: em($minWidhtBlock)) {
+            #{$property}: rem($lastSize);
+        }
+    }
+
+    @else if $type==2 {
+        // Тільки якщо більше контейнера
+        #{$property}: rem($startSize);
+
+        @media (min-width: em($maxWidhtBlock)) {
+            @if ($maxWidhtBlock==$maxWidthContainer) {
+                #{$property}: calc(#{rem($lastSize)} + #{$diffSize} * ((100vw - #{rem($minWidhtBlock)}) / #{remValue($maxWidth - $minWidhtBlock)}))
+            }
+
+            @else {
+                #{$property}: calc(#{rem($lastSize)} + #{$diffSize} * ((100vw - #{rem($minWidhtBlock)}) / #{remValue($maxWidhtBlock - $minWidhtBlock)}))
+            }
+        }
+    }
+
+    @else {
+        // Завжди
+        #{$property}: calc(#{rem($lastSize)} + #{$diffSize} * ((100vw - #{rem($minWidth)}) / #{remValue($maxWidth - $minWidth)}))
+    }
+}
+//========================================================================================================================================================================================================================================================================================

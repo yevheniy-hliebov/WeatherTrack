@@ -4,14 +4,17 @@
   "description": "ReactBase - A foundational toolkit (sass) for building React applications",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js",
-    "start": "react-scripts start"
+    "test": "node tests/test.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build"
   },
   "author": "yevhenii-hliebov",
   "license": "ISC",
   "dependencies": {
     "react": "^18.2.0",
+    "react-accessible-accordion": "^5.0.0",
     "react-dom": "^18.2.0",
+    "react-select-async-paginate": "^0.7.3",
     "sass": "^1.64.2"
   },
   "devDependencies": {

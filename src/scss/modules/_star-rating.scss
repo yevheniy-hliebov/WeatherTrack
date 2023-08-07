@@ -1,0 +1,48 @@
+@use "sass:math";
+//========================================================================================================================================================================================================================================================================================
+// Змінні
+$fillColor: #2181ff;
+$fillBg: #e7a4a4;
+$starImg: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 19"><path d="M10 0L12.2451 6.90983H19.5106L13.6327 11.1803L15.8779 18.0902L10 13.8197L4.12215 18.0902L6.36729 11.1803L0.489435 6.90983H7.75486L10 0Z"/></svg>');
+$starsCount: 5;
+$starSize: 16; //px
+$starsWidth: $starSize * $starsCount;
+//========================================================================================================================================================================================================================================================================================
+.rating {
+    --dir: right;
+    --value: 1;
+    --x: calc(100% * (var(--value) / #{$starsCount}));
+    block-size: rem($starSize);
+    inline-size: rem($starsWidth);
+    position: relative;
+    touch-action: manipulation;
+    -webkit-appearance: none;
+
+    // dir="rtl" - range working from right to left
+    &[dir="rtl"]{
+        --dir: left;
+    }
+
+    &::-moz-range-track {
+        background: linear-gradient(to var(--dir), #{$fillColor} 0 var(--x), #{$fillBg} 0 var(--x));
+        block-size: 100%;
+        mask: repeat left center/rem($starSize) #{$starImg};
+    }
+    &::-webkit-slider-runnable-track {
+        background: linear-gradient(to var(--dir), #{$fillColor} 0 var(--x), #{$fillBg} 0 var(--x));
+        block-size: 100%;
+        mask: repeat left center/rem($starSize) #{$starImg};
+        -webkit-mask: repeat left center/rem($starSize) #{$starImg};
+    }
+    &::-moz-range-thumb {
+        height: rem($starSize);
+        opacity: 0;
+        width: rem($starSize);
+    }
+    &::-webkit-slider-thumb {
+        height: rem($starSize);
+        opacity: 0;
+        width: rem($starSize);
+        -webkit-appearance: none;
+    }
+}

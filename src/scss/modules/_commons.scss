@@ -1,0 +1,71 @@
+//========================================================================================================================================================================================================================================================================================
+// .select {
+//     margin: rem(20);
+//     display: inline-block;
+
+//     position: relative;
+
+//     // .select__btn
+//     &__btn {
+//         position: relative;
+//         text-align: left;
+//         z-index: 2;
+//         width: rem(100);
+//         padding: rem(10);
+//         border-radius: rem(3);
+//         border: 1px solid #b8b8b8;
+
+//         font-size: rem(18);
+
+//         &:focus{
+//             border: 1px solid #ff9393;
+//         }
+//     }
+//     // .select__list
+//     &__list {
+//         position: absolute;
+//         z-index: 1;
+//         width: 100%;
+//         height: 0;
+//         overflow: hidden;
+//         overflow-y: auto;
+//         border-radius: rem(3);
+//         border: 1px solid transparent;
+//         transition: height 0.5s ease, border 0.8s ease;
+//         &::-webkit-scrollbar{
+//             display: none;
+//         }
+//     }
+//     // .select__search-item
+//     &__search-item {
+//         padding: rem(5) rem(10);
+
+//         &::placeholder{
+//             font-style: italic;
+//         }
+//     }
+//     // .select__item
+//     &__item {
+//         padding: rem(5) rem(10);
+//         cursor: pointer;
+//         &:nth-child(even){
+//             background-color: #f1f1f1;
+//         }
+//         @media (hover: hover) and (pointer: fine) {
+//             &:hover{
+//                 background-color: #ffe2e2;
+//             }
+//         }
+//         &._checked{
+//             background-color: #ffcece;
+//         }
+//     }
+
+//     &._active{
+//         // .select__list
+//         .select__list {
+//             height: rem(106);
+//             border: 1px solid #b8b8b8;
+//         }
+//     }
+// }

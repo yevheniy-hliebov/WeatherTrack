@@ -1,0 +1,40 @@
+/* HOME */
+/*=====================================================================================*/
+
+.body-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: rem(25) 0 rem(50);
+    overflow-y: auto;
+    background: linear-gradient(180deg, #2B2B2B 0%, #151515 100%);
+
+    display: flex;
+    flex-direction: column;
+    gap: rem(30);
+}
+
+.main {
+    flex: 1;
+    // .main__container
+    &__container {
+        height: 100%;
+    }
+}
+
+.weather-content {
+    width: 100%;
+    height: 100%;
+    border-radius: rem(25);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(rem(20));
+}
+
+.current-weather {
+    width: 100%;
+    height: 100%;
+    max-width: rem(400);
+    border-radius: rem(25);
+    border-right: rem(2) solid $whiteColor;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%);
+    backdrop-filter: blur(rem(20));
+}

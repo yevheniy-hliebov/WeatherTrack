@@ -1,0 +1,127 @@
+/* RESET STYLES */
+/*=====================================================================================*/
+/* Remove all space around and inside elements and border */
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 16px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* border-box tells the browser to account for any border and padding in 
+   the values you specify for an element's width and height */
+*,
+*::before,
+*::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button, input[type="button"] {
+    cursor: pointer;
+}
+
+/* because it has some indents of less than 1 pixel, which is annoying */
+button{
+    display: block;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+nav, header, footer, aside { display: block; }
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container and position top*/
+img {
+    vertical-align: top;
+    max-width: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* turn on the ability to inherit font-family */
+input, textarea, button {
+    font-family: inherit;
+}
+
+input:focus, textarea:focus, button:focus{
+    outline: none;
+}
+
+/* input, textarea, button {
+    outline: none;
+} */
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+/* Reset heading text */
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
