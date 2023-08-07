@@ -31,6 +31,9 @@ export const cureentWeather = {
     "clouds": {
         "all": 0
     },
+    "rain": {
+        "3h": 1.53
+    },
     "dt": 1691305202,
     "sys": {
         "country": "UA",
