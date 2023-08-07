@@ -1,0 +1,33 @@
+{
+  "name": "react-base",
+  "version": "0.0.1",
+  "description": "ReactBase - A foundational toolkit (sass) for building React applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "react-scripts start"
+  },
+  "author": "yevhenii-hliebov",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.64.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "react-scripts": "^5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
