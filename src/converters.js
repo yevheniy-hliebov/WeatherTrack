@@ -51,8 +51,21 @@ export function degreesToDirection(deg) {
  *                        - DDD: day of the week (e.g., Monday, Mon)
  * @returns {string} A string representing the formatted time according to the provided template.
  */
-export function getFormattedTime(unix, mask) {
-  const date = new Date(unix * 1000);
+export function getFormattedTime(unix, mask, timezone = 0) {
+  let date = new Date(unix * 1000);
+
+  let utc = new Date(date.getUTCFullYear(), date.getUTCMonth(),
+    date.getUTCDate(), date.getUTCHours(),
+    date.getUTCMinutes(), date.getUTCSeconds());
+  let timezonedDate = new Date(utc.getTime() + timezone * 1000);
+  date = timezonedDate
+
+  // let date_utc = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
+  // date.getUTCDate(), date.getUTCHours(),
+  // date.getUTCMinutes(), date.getUTCSeconds());
+
+  // date = date_utc;
+
   const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const tokens = {
@@ -74,6 +87,8 @@ export function getFormattedTime(unix, mask) {
 
   return result;
 }
+
+
 
 /**
  * Function to convert a given timezone to the number of hours ahead or behind GMT.

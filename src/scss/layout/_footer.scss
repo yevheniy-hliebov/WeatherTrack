@@ -1,25 +1,3 @@
 ///* FOOTER */
 ///*=====================================================================================*/
-.footer {
-    width: 100%;
-    height: rem(50);
-    color: $whiteColor;
-    font-weight: 600;
 
-    // .footer__container
-    &__container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    // .footer__links
-    &__links {
-    }
-    // .footer__udp-info
-    &__udp-info {}
-}
-.link {
-    &:hover {
-        color: #cccccc;
-    }
-}

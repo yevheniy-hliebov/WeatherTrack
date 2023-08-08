@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Search from "./components/seacrh/search";
-import Header from "./components/header/header";
 import { getCurrentWeather } from "./components/current-card/get-current-weather";
-import { cureentWeather } from "./data/data-current-weather";
-import WeatherContent from "./components/weather-content/weather-content";
 import CurrentWeather from "./components/current-card/current-weather";
-import Footer from "./components/footer/footer";
-import { getFormattedTime } from "./converters";
+import { getForecast } from "./components/current-card/get-forecast";
 
 export default function App() {
   const [hCity, setCity] = new useState(localStorage.getItem("city") !== null ? JSON.parse(localStorage.getItem("city")) : null);
   const [hCurrentWeather, setCurrentWeather] = new useState(null);
-  // const [hCurrentWeather, setCurrentWeather] = new useState(cureentWeather);
+  const [hForecast, setForecast] = new useState(null);
 
   const onHandleSearchChange = (searchData) => {
     const city = JSON.parse(searchData.value)
@@ -21,26 +17,41 @@ export default function App() {
   useEffect(() => {
     if (hCity !== null) {
       getCurrentWeather(hCity.latitude, hCity.longitude)
-        .then(weatherData => setCurrentWeather(weatherData))
+        .then(weatherData => {
+          setCurrentWeather(weatherData)
+
+          getForecast(hCity.latitude, hCity.longitude)
+            .then(forecastData => {
+              setForecast(forecastData);
+            })
+            .catch(error => console.error(error));
+        })
         .catch(error => console.error(error));
     }
   }, [hCity]);
 
   return (
     <>
-      <Header>
+      <div className="bg">
+        <img src="./assets/bg.jpg" alt="bg" />
+      </div>
+      <div className="short-container">
+        <div className="logo">WeatherTrack</div>
         <Search onSearchChange={onHandleSearchChange} />
-      </Header>
-      {
-        (hCity !== null && hCurrentWeather !== null) && (
-          <>
-            <WeatherContent>
-              <CurrentWeather hCity={hCity} hCurrentWeather={hCurrentWeather} />
-            </WeatherContent>
-            <Footer updWeatherTime={getFormattedTime(hCurrentWeather.dt, 'HH:mm dd.MM.yyyy')} />
-          </>
-        )
-      }
+        {
+          (hCity !== null && hCurrentWeather !== null) && (
+            <>
+              <CurrentWeather hCity={hCity} hCurrentWeather={hCurrentWeather} hForecast={hForecast} />
+            </>
+          )
+        }
+        <div className="links">
+          {'APIs: '}
+          <a href="https://openweathermap.org" className="link" target="_blank">openweathermap.org</a>
+          {', '}
+          <a href="https://rapidapi.com/wirefreethought/api/geodb-cities" className="link" target="_blank">GeoDB Cities</a>
+        </div>
+      </div>
     </>
   )
 }
