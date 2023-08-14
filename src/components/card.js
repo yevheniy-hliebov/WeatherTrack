@@ -2,7 +2,7 @@ import CurrentWeather from "./current/current-weather";
 import Forecast from "./forecast/forecast";
 
 const Card = ({ hCity, hTab, setTab }) => {
-    
+    if (hCity === null) return
     return (
         <div className="card">
             <div className="card__header">
