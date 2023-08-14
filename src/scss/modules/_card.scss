@@ -1,0 +1,120 @@
+.card {
+    width: 100%;
+    display: flex;
+    max-width: rem(622);
+    padding: rem(25) rem(25) rem(10);
+    flex-direction: column;
+    align-items: center;
+    gap: rem(20);
+
+    border-radius: rem(25);
+    border: rem(1) solid #f4f4f499;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.10) 100%), rgba(0, 0, 0, 0.25);
+    /* glass efect blur */
+    backdrop-filter: blur(rem(5));
+
+    // .card__header
+    &__header {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(10);
+    }
+
+    // .card__city-icon
+    &__city-icon {
+        display: flex;
+
+        img {
+            width: rem(24);
+            height: rem(24);
+        }
+    }
+
+    // .card__city
+    &__city {
+        display: flex;
+        align-items: center;
+        font-size: rem(24);
+        font-weight: 600;
+
+
+    }
+
+    // .card__tabs
+    &__tabs {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(10);
+    }
+
+    // .{`card__tab
+    &__tab {
+        width: 100%;
+        max-width: rem(200);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(10);
+
+        font-size: rem(20);
+        font-weight: 500;
+        color: $whiteColor;
+
+        padding: rem(5) rem(15);
+        border-radius: rem(15);
+        border: rem(1) solid $whiteColor;
+        background-color: transparent;
+
+        transition: all 0.3s ease;
+
+        &.tab-selected {
+            color: $mainColor;
+            background-color: $whiteColor;
+        }
+    }
+
+    // .card__content
+    &__content {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: em(530)) {
+    .card {
+        gap: rem(10);
+        padding: rem(10);
+
+        // .card__header
+        &__header {}
+
+        // .card__city
+        &__city {
+            font-size: rem(18);
+        }
+
+        // .card__city-icon
+        &__city-icon {
+            display: flex;
+
+            img {
+                width: rem(18);
+                height: rem(18);
+            }
+        }
+
+        // .card__tabs
+        &__tabs {}
+
+        // .card__tab
+        &__tab {
+            max-width: rem(150);
+            font-size: rem(16);
+        }
+    }
+}

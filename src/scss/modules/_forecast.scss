@@ -1,0 +1,298 @@
+.week-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, rem(106));
+    padding: rem(10) rem(1);
+    gap: rem(9);
+
+    // border-bottom: rem(1) solid #f4f4f499;
+
+    overflow-x: auto;
+
+    // .week-list__item
+    &__item {
+        display: flex;
+        max-width: rem(120);
+        padding: rem(15);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        color: $whiteColor;
+        border-radius: rem(15);
+        border: rem(1) solid #f4f4f499;
+        background-color: transparent;
+
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $mainColor;
+            background-color: $whiteColor;
+        }
+
+        &.day-selected {
+            color: $mainColor;
+            background-color: $whiteColor;
+        }
+    }
+
+    // .week-list__day
+    &__day {
+        font-size: rem(20);
+        font-weight: 500;
+    }
+
+    // .week-list__date
+    &__date {
+        font-size: rem(13);
+        font-weight: 300;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &::-webkit-scrollbar {
+            height: rem(10);
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            border-radius: rem(25);
+            background: $whiteColor;
+        }
+    }
+}
+
+.forecast-table {
+    margin-top: rem(15);
+    display: flex;
+    padding: rem(10) rem(5) rem(0);
+    justify-content: center;
+    align-items: flex-start;
+    gap: rem(10);
+
+    border-top: rem(1) solid #f4f4f499;
+
+    color: $whiteColor;
+
+    // .forecast-table__fields
+    &__fields {
+        margin-top: rem(11);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        gap: rem(10);
+        padding: rem(5) 0;
+
+
+        @media (hover: hover) and (pointer: fine) {
+            padding-bottom: rem(20);
+        }
+    }
+
+    // .forecast-table__sunrise-sunset
+    &__sunrise-sunset {
+        display: flex;
+        padding: rem(5);
+        flex-direction: column;
+        gap: rem(10);
+        align-self: stretch;
+
+        font-size: rem(14);
+        font-weight: 400;
+        text-align: center;
+
+        border-radius: rem(5);
+        background: #666;
+    }
+
+    // .forecast-table__sunrise
+    &__sunrise {}
+
+    // .forecast-table__sunset
+    &__sunset {}
+
+    // .forecast-table__field
+    &__field {
+        font-size: rem(14);
+        font-weight: 400;
+    }
+
+    // .forecast-table__columns
+    &__columns {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex: 1 0 0;
+
+        overflow-x: auto;
+        @media (hover: hover) and (pointer: fine) {
+            padding-bottom: rem(5);
+            &::-webkit-scrollbar {
+                height: rem(10);
+            }
+    
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+    
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                border-radius: rem(25);
+                background: $whiteColor;
+            }
+        }
+    }
+
+    // .forecast-table__hour-forecast
+    &__hour-forecast {}
+}
+
+.hour-forecast {
+    display: flex;
+    // max-width: rem(70);
+    padding: rem(5) rem(10);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: rem(10);
+
+    color: $whiteColor;
+
+    font-size: rem(14);
+    font-weight: 400;
+    text-align: center;
+
+    // .hour-forecast__time
+    &__time {
+        font-size: rem(16);
+        font-weight: 500;
+    }
+
+    // .hour-forecast__icon
+    &__icon {
+        width: rem(37);
+        height: rem(37);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: rem(6);
+        border-radius: rem(10);
+        background: #2B2B2B;
+
+        img {
+            display: block;
+            width: rem(25);
+            height: rem(25);
+        }
+    }
+
+    // .hour-forecast__temp
+    &__temp {
+        font-size: rem(16);
+        font-weight: 500;
+    }
+
+    // .hour-forecast__feels-like
+    &__feels-like {
+        font-size: rem(13);
+        font-weight: 300;
+    }
+
+    // .hour-forecast__humidity
+    &__humidity {}
+
+    // .hour-forecast__pressure
+    &__pressure {}
+
+    // .hour-forecast__wind-speed
+    &__wind-speed {}
+
+    // .hour-forecast__rain-vol
+    &__rain-vol {}
+}
+
+@media (max-width: em(530)) {
+    .week-list {
+        grid-template-columns: repeat(6, rem(80));
+        padding: rem(10) rem(1);
+        gap: rem(9);
+        
+        // .week-list__item
+        &__item {
+            max-width: rem(80);
+            padding: rem(5);
+            border-radius: rem(10);
+        }
+    
+        // .week-list__day
+        &__day {
+            font-size: rem(16);
+        }
+    
+        // .week-list__date
+        &__date {
+            font-size: rem(10);
+        }
+    }
+
+    .forecast-table {
+        margin-top: rem(10);
+        padding: rem(5) rem(5) rem(0);
+    
+        // .forecast-table__sunrise-sunset
+        &__sunrise-sunset {
+            padding: rem(2);
+            gap: rem(5);
+    
+            font-size: rem(12);
+        }
+        
+        &__fields {
+            gap: rem(5);
+            margin-top: rem(5);
+        }
+
+        // .forecast-table__field
+        &__field {
+            font-size: rem(12);
+        }
+    }
+
+    .hour-forecast {
+        display: flex;
+        gap: rem(5);
+        padding: rem(5) rem(10);
+    
+        font-size: rem(12);
+    
+        // .hour-forecast__time
+        &__time {
+            font-size: rem(14);
+        }
+    
+        // .hour-forecast__icon
+        &__icon {
+            width: rem(20);
+            height: rem(20);
+            padding: rem(2);
+            border-radius: rem(5);
+    
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    
+        // .hour-forecast__temp
+        &__temp {
+            font-size: rem(14);
+        }
+    }
+}

@@ -33,6 +33,7 @@
 
 .main {
     flex: 1;
+
     // .main__container
     &__container {
         height: 100%;
@@ -53,12 +54,20 @@
 
     color: $whiteColor;
 
-    .search-wrapper {
+    .search-bar {
         width: 100%;
     }
+    .search-wrapper {
+        padding: 0 rem(1);
+        width: 100%;
 
-    @media (max-width: em(376)) {
-        gap: rem(15);
+        &:not(:last-child) {
+            margin-bottom: rem(10);
+        }
+    }
+
+    @media (max-width: em(530)) {
+        gap: rem(10);
     }
 }
 
@@ -68,8 +77,8 @@
     font-weight: 700;
     line-height: normal;
 
-    @media (max-width: em(376)) {
-        font-size: rem(24);
+    @media (max-width: em(530)) {
+        font-size: rem(18);
     }
 }
 
@@ -87,5 +96,58 @@
 .link {
     &:hover {
         color: #cccccc;
+    }
+}
+
+.search-history {
+    text-align: center;
+    // .search-history__title
+    &__title {
+        font-size: rem(16);
+        font-weight: 600;
+
+        &:not(:last-child) {
+            margin-bottom: rem(5);
+        }
+    }
+
+    // .search-history__cities
+    &__cities {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // gap: rem(10);
+        flex-wrap: wrap;
+    }
+
+    // .search-history__city
+    &__city {
+        display: flex;
+        align-items: center;
+        padding-right: rem(10);
+    }    
+    // .search-history__button
+    &__button {
+        margin-left: rem(10);
+        display: flex;
+        padding: rem(5) rem(10);
+        justify-content: center;
+        align-items: center;
+        gap: rem(10);
+        border-radius: rem(10);
+
+        transition: all 0.3s ease;
+
+        color: $whiteColor;
+        font-family: 'Montserrat';
+        font-size: rem(14);
+        font-weight: 500;
+        background-color: transparent;
+        
+        &._checked {
+            background-color: $whiteColor;
+            color: $mainColor;
+        }
+        
     }
 }

@@ -6,9 +6,6 @@ import { customStyles } from "./custom-style";
 
 const Search = ({ onSearchChange }) => {
     const [hSearch, setSearch] = new useState(null);
-    if (hSearch) {
-        localStorage.setItem("city", hSearch.value ?? null);
-    }
 
     const handleOnChange = (searchData) => {
         setSearch(searchData);

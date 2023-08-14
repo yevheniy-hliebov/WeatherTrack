@@ -1,0 +1,202 @@
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(20);
+
+    color: $whiteColor;
+
+    // .current-weather__temps-desc
+    &__temps-desc {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // .current-weather__temps
+    &__temps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: rem(25);
+    }
+
+    // .current-weather__temp
+    &__temp {
+        font-size: rem(96);
+        font-weight: 500;
+    }
+
+    // .current-weather__feels-like-temp
+    &__feels-like-temp {
+        width: rem(115);
+        font-size: rem(24);
+        font-weight: 600;
+    }
+
+    // .current-weather__desc
+    &__desc {
+        display: flex;
+        align-items: center;
+        gap: rem(10);
+    }
+
+    // .current-weather__desc-icon
+    &__desc-icon {
+        display: flex;
+        align-items: center;
+
+        padding: rem(6);
+        border-radius: rem(10);
+        background-color: #2B2B2B;
+    }
+
+    // .current-weather__desc-text
+    &__desc-text {
+        font-size: rem(18);
+        font-weight: 400;
+        line-height: 160%;
+        text-transform: capitalize;
+    }
+
+    // .current-weather__details-block
+    &__details-block {
+        border-top: rem(1) solid #f4f4f499;
+        padding: rem(10) rem(5) rem(25);
+    }
+
+    // .current-weather__details-label
+    &__details-label {
+        font-size: rem(16);
+        font-weight: 600;
+        letter-spacing: rem(-0.16);
+
+        &:not(:last-child) {
+            margin-bottom: rem(10);
+        }
+    }
+
+    // .current-weather__details
+    &__details {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(25);
+        flex-wrap: wrap;
+    }
+
+    // .current-weather__detail-info
+    &__detail-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    // .current-weather__dt-weather
+    &__dt-weather {
+        text-align: center;
+        font-size: rem(16);
+        font-weight: 400;
+    }
+}
+
+.detail-info {
+
+    // .detail-info__value
+    &__value {
+        font-size: rem(18);
+        font-weight: 600;
+        letter-spacing: rem(-0.18);
+    }
+
+    // .detail-info__label
+    &__label {
+        font-size: rem(14);
+        font-weight: 300;
+        letter-spacing: rem(-0.14);
+    }
+}
+
+@media (max-width: em(530)) {
+    .current-weather {
+        gap: rem(10);
+        
+        // .current-weather__temps
+        &__temps {
+            gap: rem(15);
+        }
+    
+        // .current-weather__temp
+        &__temp {
+            font-size: rem(62);
+        }
+    
+        // .current-weather__feels-like-temp
+        &__feels-like-temp {
+            width: rem(90);
+            font-size: rem(18);
+        }
+        
+        // .current-weather__desc-icon
+        &__desc-icon {
+            width: rem(30);
+            height: rem(30);
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    
+        // .current-weather__desc-text
+        &__desc-text {
+            font-size: rem(18);
+            font-weight: 400;
+            line-height: 160%;
+            text-transform: capitalize;
+        }
+    
+        // .current-weather__details-block
+        &__details-block {
+            margin-top: rem(10);
+            padding: rem(10) rem(5) rem(15);
+        }
+    
+        // .current-weather__details-label
+        &__details-label {
+            font-size: rem(14);
+            letter-spacing: rem(-0.14);
+    
+            &:not(:last-child) {
+                margin-bottom: rem(5);
+            }
+        }
+    
+        // .current-weather__details
+        &__details {
+            gap: rem(15);
+        }
+    
+        // .current-weather__dt-weather
+        &__dt-weather {
+            font-size: rem(13);
+        }
+    }
+
+    .detail-info {
+        // .detail-info__value
+        &__value {
+            font-size: rem(14);
+            letter-spacing: rem(-0.14);
+        }
+    
+        // .detail-info__label
+        &__label {
+            font-size: rem(13);
+            letter-spacing: rem(-0.13);
+        }
+    }
+}

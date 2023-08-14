@@ -12,10 +12,14 @@ export const customStyles = {
     placeholder: (provided, state) => ({
         ...provided,
         color: "#f4f4f4",
+        padding: "0 13px",
+        margin: "0"
     }),
     input: (provided, state) => ({
         ...provided,
         color: "#f4f4f4",
+        padding: "0 13px",
+        margin: "0"
     }),
     menu: (provided, state) => ({
         ...provided,
@@ -33,4 +37,8 @@ export const customStyles = {
         color: state.isFocused ? '#272727' : '#f4f4f4',
         cursor: "pointer",
     }),
+    dropdownIndicator: (provided, state) =>({
+        ...provided,
+        color: '#f4f4f4',
+    })
 }
