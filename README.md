@@ -1,4 +1,4 @@
-# WeatherTack
+# WeatherTrack
 
 WeatherTrack is a weather monitoring application that enables users to retrieve detailed meteorological data for cities worldwide.
 

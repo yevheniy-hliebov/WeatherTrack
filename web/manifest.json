@@ -1,6 +1,6 @@
 {
-    "name": "weathertack",
-    "short_name": "weathertack",
+    "name": "weathertrack",
+    "short_name": "weathertrack",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,4 +1,4 @@
-package com.hliebov.weathertack
+package com.hliebov.weathertrack
 
 import io.flutter.embedding.android.FlutterActivity
 
