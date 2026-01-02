@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:weathertrack/core/theme/theme.dart';
+import 'package:weathertrack/core/theme/components/system_ui_style.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemUiStyle.configure();
+
   runApp(const App());
 }
 
