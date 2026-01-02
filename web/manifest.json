@@ -1,11 +1,11 @@
 {
-    "name": "weathertrack",
-    "short_name": "weathertrack",
+    "name": "WeatherTrack",
+    "short_name": "WeatherTrack",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#424242",
+    "theme_color": "#424242",
+    "description": "WeatherTrack is a weather monitoring application that enables users to retrieve detailed meteorological data for cities worldwide.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
