@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:weathertrack/core/theme/theme.dart';
+import 'package:weathertrack/core/theme/components/system_ui_style.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemUiStyle.configure();
+
   runApp(const App());
 }
 
@@ -11,7 +17,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'WeatherTrack App',
-      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+      theme: AppTheme.theme,
       home: const Scaffold(body: Center(child: Text('WeatherTrack'))),
     );
   }
