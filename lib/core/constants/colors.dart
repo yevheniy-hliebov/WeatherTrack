@@ -18,6 +18,8 @@ abstract class AppColors {
 
   static const Color glassBg = Color(0x735C5C5C);
   
+  static const Color opaqueGlassBg = Color(0xFF5C5C5C);
+  
   static const LinearGradient glassGradient = LinearGradient(
     colors: [
       Color(0x66FFFFFF),
