@@ -2,14 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:weathertrack/core/constants/colors.dart';
+import 'package:weathertrack/core/constants/rounded_radius.dart';
 
 class GlassContainer extends StatelessWidget {
   final bool bordered;
   final bool transparency;
   final EdgeInsets? padding;
+  final double radius;
   final Widget? child;
 
-  final double radius = 25;
   final double blurValue = 4;
 
   const GlassContainer({
@@ -17,6 +18,7 @@ class GlassContainer extends StatelessWidget {
     this.bordered = false,
     this.transparency = true,
     this.padding,
+    this.radius = RoundedRadius.lg,
     this.child,
   });
 
