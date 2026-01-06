@@ -22,9 +22,11 @@ abstract class AppTheme {
       labelLarge: const TextStyle().copyWith(color: AppColors.text),
       labelMedium: const TextStyle().copyWith(color: AppColors.text),
     ),
-    textSelectionTheme: const TextSelectionThemeData(
+    textSelectionTheme: TextSelectionThemeData(
       cursorColor: AppColors.text,
       selectionHandleColor: AppColors.text,
+      selectionColor: AppColors.text.withValues(alpha: 0.2),
     ),
+    iconTheme: const IconThemeData(color: AppColors.primary),
   );
 }
