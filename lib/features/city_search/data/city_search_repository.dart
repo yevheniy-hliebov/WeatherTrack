@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:weathertrack/core/constants/api.dart';
-import 'package:weathertrack/features/cities/data/city_exceptions.dart';
-import 'package:weathertrack/features/cities/data/city_model.dart';
+import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
+import 'package:weathertrack/features/city_search/data/city_model.dart';
 
-class CityRepository {
+class CitySearchRepository {
   final http.Client client;
 
-  CityRepository({http.Client? client}) : client = client ?? http.Client();
+  CitySearchRepository({http.Client? client}) : client = client ?? http.Client();
 
-  Future<List<CityModel>> search(String namePrefix) async {
+  Future<List<CityModel>> fetch(String namePrefix) async {
     final uri = Uri.parse('${Api.geo.url}/cities').replace(
       queryParameters: {
         'minPopulation': Api.geo.population.toString(),
