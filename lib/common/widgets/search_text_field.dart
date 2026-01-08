@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weathertrack/common/widgets/glass_container.dart';
 import 'package:weathertrack/common/widgets/loader.dart';
 import 'package:weathertrack/common/widgets/search_suggestions.dart';
+import 'package:weathertrack/core/constants/colors.dart';
 import 'package:weathertrack/core/constants/corners.dart';
 import 'package:weathertrack/core/theme/theme.dart';
 
@@ -13,6 +14,7 @@ class SearchTextField<T> extends StatefulWidget {
   final String Function(T item) displaySelectionText;
   final void Function(String query)? onChanged;
   final void Function(T item)? onSelect;
+  final String errorMessage;
 
   const SearchTextField({
     super.key,
@@ -23,6 +25,7 @@ class SearchTextField<T> extends StatefulWidget {
     required this.displaySelectionText,
     this.onChanged,
     this.onSelect,
+    this.errorMessage = '',
   });
 
   @override
@@ -42,40 +45,54 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return MenuTheme(
-          data: AppSearchTheme.menu,
-          child: MenuAnchor(
-            controller: menuController,
-            builder: (context, controller, child) {
-              return GlassContainer(
-                bordered: controller.isOpen,
-                radius: AppCorners.xl,
-                child: SearchBar(
-                  controller: searchController,
-                  hintText: widget.hintText,
-                  trailing: [_buildIconOrLoader()],
-                  onTap: () => controller.open(),
-                  onChanged: widget.onChanged,
-                ),
-              );
-            },
-            menuChildren: [
-              SearchSuggestions<T>(
-                displayItemText: widget.displaySuggestionText,
-                suggestions: widget.suggestions,
-                onTap: (item) {
-                  widget.onSelect?.call(item);
-                  searchController.text = widget.displaySelectionText(item);
-                  menuController.close();
+    return Column(
+      mainAxisAlignment: .start,
+      crossAxisAlignment: .start,
+      mainAxisSize: .min,
+      children: [
+        LayoutBuilder(
+          builder: (context, constraints) {
+            return MenuTheme(
+              data: AppSearchTheme.menu,
+              child: MenuAnchor(
+                controller: menuController,
+                builder: (context, controller, child) {
+                  return GlassContainer(
+                    bordered: controller.isOpen,
+                    radius: AppCorners.xl,
+                    child: SearchBar(
+                      controller: searchController,
+                      hintText: widget.hintText,
+                      trailing: [_buildIconOrLoader()],
+                      onTap: () => controller.open(),
+                      onChanged: widget.onChanged,
+                    ),
+                  );
                 },
-                maxWidth: constraints.maxWidth,
+                menuChildren: [
+                  SearchSuggestions<T>(
+                    displayItemText: widget.displaySuggestionText,
+                    suggestions: widget.suggestions,
+                    onTap: (item) {
+                      widget.onSelect?.call(item);
+                      searchController.text = widget.displaySelectionText(item);
+                      menuController.close();
+                    },
+                    maxWidth: constraints.maxWidth,
+                  ),
+                ],
               ),
-            ],
+            );
+          },
+        ),
+        if (widget.errorMessage.isNotEmpty)
+          Text(
+            widget.errorMessage,
+            style: TextTheme.of(
+              context,
+            ).bodyMedium?.copyWith(color: AppColors.error),
           ),
-        );
-      },
+      ],
     );
   }
 

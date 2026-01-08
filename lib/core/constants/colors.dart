@@ -6,6 +6,8 @@ class AppColors {
   static const Color primary = Color(0xFFF4F4F4);
   static const Color onPrimary = Color(0xFF242424);
   static const Color scaffoldBackground = Color(0xFF5F5F5F);
+  
+  static const Color error = Color(0xFFFF3333);
 
   static const Color text = Color(0xFFF4F4F4);
   static const Color inverseText = Color(0xFF242424);

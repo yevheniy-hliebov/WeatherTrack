@@ -13,6 +13,7 @@ abstract class AppTextTheme {
       fontWeight: FontWeight.w800,
     ),
     bodyLarge: const TextStyle().copyWith(color: AppColors.text),
+    bodyMedium: const TextStyle().copyWith(color: AppColors.text),
     labelLarge: const TextStyle().copyWith(color: AppColors.text),
     labelMedium: const TextStyle().copyWith(color: AppColors.text),
   );
