@@ -9,6 +9,7 @@ class GlassContainer extends StatelessWidget {
   final bool transparency;
   final EdgeInsets? padding;
   final double radius;
+  final BoxConstraints constraints;
   final Widget? child;
 
   final double blurValue = 4;
@@ -19,6 +20,7 @@ class GlassContainer extends StatelessWidget {
     this.transparency = true,
     this.padding,
     this.radius = AppCorners.lg,
+    this.constraints = const BoxConstraints(),
     this.child,
   });
 
@@ -38,6 +40,8 @@ class GlassContainer extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: blurValue, sigmaY: blurValue),
           child: Container(
+            width: double.maxFinite,
+            constraints: constraints,
             padding: padding,
             decoration: BoxDecoration(
               color: transparency ? AppColors.glassBg : AppColors.opaqueGlassBg,
