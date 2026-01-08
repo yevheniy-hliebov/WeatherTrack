@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:weathertrack/core/constants/colors.dart';
-import 'package:weathertrack/core/constants/rounded_radius.dart';
+import 'package:weathertrack/core/constants/corners.dart';
 
 class GlassContainer extends StatelessWidget {
   final bool bordered;
@@ -18,7 +18,7 @@ class GlassContainer extends StatelessWidget {
     this.bordered = false,
     this.transparency = true,
     this.padding,
-    this.radius = RoundedRadius.lg,
+    this.radius = AppCorners.lg,
     this.child,
   });
 
