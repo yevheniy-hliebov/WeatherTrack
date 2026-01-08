@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:weathertrack/core/theme/theme.dart';
 import 'package:weathertrack/core/theme/components/system_ui_style.dart';
+import 'package:weathertrack/features/city_search/data/city_search_repository.dart';
+import 'package:weathertrack/features/city_search/presentation/providers/city_search_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:weathertrack/features/home/presentation/pages/home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +22,17 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'WeatherTrack App',
       theme: AppTheme.theme,
-      home: const Scaffold(body: Center(child: Text('WeatherTrack'))),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => CitySearchProvider(
+              CitySearchRepository(),
+              debounceDuration: const Duration(seconds: 1),
+            ),
+          ),
+        ],
+        child: const HomePage(),
+      ),
     );
   }
 }
