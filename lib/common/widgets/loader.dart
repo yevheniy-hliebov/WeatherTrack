@@ -12,7 +12,7 @@ class Loader extends StatelessWidget {
     this.color = AppColors.primary,
     this.size = 35,
     this.strokeWidth = 2,
-    this.padding = const EdgeInsets.all(0),
+    this.padding = EdgeInsets.zero,
   });
 
   @override

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:weathertrack/core/constants/colors.dart';
+import 'package:weathertrack/core/constants/spacing.dart';
 
 part 'components/text_theme.dart';
+part 'components/search_theme.dart';
 
 abstract class AppTheme {
   AppTheme._();
@@ -16,5 +18,6 @@ abstract class AppTheme {
     textTheme: _textTheme,
     textSelectionTheme: AppTextTheme.textSelection,
     iconTheme: const IconThemeData(color: AppColors.primary),
+    searchBarTheme: AppSearchTheme.bar,
   );
 }
