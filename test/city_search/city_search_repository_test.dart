@@ -8,6 +8,8 @@ import 'package:weathertrack/features/city_search/data/city_model.dart';
 import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
 import 'package:weathertrack/features/city_search/data/city_search_repository.dart';
 
+import '../fixtures/city_fixtures.dart';
+
 class MockHttpClient extends Mock implements http.Client {}
 
 class FakeUri extends Fake implements Uri {}
@@ -27,43 +29,11 @@ void main() {
 
   group('CitySearchRepositoty - fetch', () {
     final namePrefix = 'Aix';
-    final mockResponse = {
-      'data': [
-        {
-          'id': 3350606,
-          'wikiDataId': 'Q24668',
-          'type': 'CITY',
-          'city': 'Aixirivall',
-          'name': 'Aixirivall',
-          'country': 'Andorra',
-          'countryCode': 'AD',
-          'region': 'Sant Julià de Lòria',
-          'regionCode': '06',
-          'latitude': 42.46245,
-          'longitude': 1.50209,
-          'population': 0,
-        },
-        {
-          'id': 3216144,
-          'wikiDataId': 'Q24656',
-          'type': 'CITY',
-          'city': 'Aixovall',
-          'name': 'Aixovall',
-          'country': 'Andorra',
-          'countryCode': 'AD',
-          'region': 'Sant Julià de Lòria',
-          'regionCode': '06',
-          'latitude': 42.47635833,
-          'longitude': 1.48949167,
-          'population': 0,
-        },
-      ],
-    };
 
     test(
       'should return List<CityModel> when the response code is 200 (Success)',
       () async {
-        final jsonString = jsonEncode(mockResponse);
+        final jsonString = jsonEncode(CityFixtures.mockResponse);
         final bytes = utf8.encode(jsonString);
 
         when(
