@@ -20,7 +20,7 @@ class CitySearchRepository {
     );
 
     try {
-      final response = await http.get(
+      final response = await client.get(
         uri,
         headers: {'X-RapidAPI-Key': Api.geo.xRapidapiKey},
       );
