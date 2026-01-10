@@ -13,16 +13,18 @@ class HomePage extends StatelessWidget {
     final historyProvider = context.watch<CityHistoryProvider>();
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(Spacing.md),
-        child: Column(
-          spacing: Spacing.sm,
-          children: [
-            CitySearchBar(
-              onSelect: (city) => historyProvider.addToHistory(city),
-            ),
-            const CitySearchHistory(),
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(Spacing.md),
+          child: Column(
+            spacing: Spacing.sm,
+            children: [
+              CitySearchBar(
+                onSelect: (city) => historyProvider.addToHistory(city),
+              ),
+              const CitySearchHistory(),
+            ],
+          ),
         ),
       ),
     );
