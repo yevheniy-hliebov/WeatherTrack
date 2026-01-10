@@ -33,14 +33,23 @@ class SearchTextField<T> extends StatefulWidget {
 }
 
 class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
-  late MenuController menuController;
-  late TextEditingController searchController;
+  late MenuController _menuController;
+  late TextEditingController _searchController;
+  late FocusNode _searchNode;
 
   @override
   void initState() {
     super.initState();
-    menuController = MenuController();
-    searchController = TextEditingController();
+    _menuController = MenuController();
+    _searchController = TextEditingController();
+    _searchNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _searchNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -55,17 +64,21 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
             return MenuTheme(
               data: AppSearchTheme.menu,
               child: MenuAnchor(
-                controller: menuController,
+                controller: _menuController,
                 builder: (context, controller, child) {
                   return GlassContainer(
                     bordered: controller.isOpen,
                     radius: AppCorners.xl,
                     child: SearchBar(
-                      controller: searchController,
+                      focusNode: _searchNode,
+                      controller: _searchController,
                       hintText: widget.hintText,
                       trailing: [_buildIconOrLoader()],
                       onTap: () => controller.open(),
-                      onChanged: widget.onChanged,
+                      onChanged: (value) {
+                        controller.open();
+                        widget.onChanged?.call(value);
+                      },
                     ),
                   );
                 },
@@ -75,8 +88,9 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
                     suggestions: widget.suggestions,
                     onTap: (item) {
                       widget.onSelect?.call(item);
-                      searchController.text = widget.displaySelectionText(item);
-                      menuController.close();
+                      _searchController.text = widget.displaySelectionText(item);
+                      _searchNode.unfocus();
+                      _menuController.close();
                     },
                     maxWidth: constraints.maxWidth,
                   ),
