@@ -16,7 +16,7 @@ class CityHistoryProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getHistory() async {
+  void getHistory() {
     _updateState(state.copyWith(isLoading: true, errorMessage: ''));
     try {
       final history = _repository.getHistory();
