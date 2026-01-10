@@ -37,4 +37,21 @@ class CityFixtures {
   static final List<CityModel> mockCities = CityModel.fromJsonList(
     mockResponse['data']!,
   );
+
+  static final List<CityModel> mockHistory = List.generate(5, (i) {
+    return CityModel(
+      id: i + 10,
+      wikiDataId: 'Q${i + 11}',
+      type: 'CITY',
+      city: 'City $i',
+      name: 'City $i',
+      country: 'FakeCountry',
+      countryCode: 'FC',
+      region: 'City $i region',
+      regionCode: '$i',
+      latitude: i * 1.1,
+      longitude: i * 2.2,
+      population: 1 * 5000,
+    );
+  });
 }
