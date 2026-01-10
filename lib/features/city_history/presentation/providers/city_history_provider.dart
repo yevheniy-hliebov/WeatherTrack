@@ -6,9 +6,7 @@ import 'package:weathertrack/features/city_search/data/city_model.dart';
 class CityHistoryProvider extends ChangeNotifier {
   final CityHistoryRepository _repository;
 
-  CityHistoryProvider(this._repository) {
-    getHistory();
-  }
+  CityHistoryProvider(this._repository);
 
   CityHistoryState _state = const CityHistoryState();
   CityHistoryState get state => _state;

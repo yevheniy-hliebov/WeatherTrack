@@ -38,7 +38,7 @@ class App extends StatelessWidget {
           ChangeNotifierProvider(
             create: (context) => CityHistoryProvider(
               CityHistoryRepository(prefs: getIt<SharedPreferences>()),
-            ),
+            )..getHistory(),
           ),
         ],
         child: const HomePage(),
