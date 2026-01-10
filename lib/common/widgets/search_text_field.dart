@@ -59,45 +59,50 @@ class _SearchTextFieldState<T> extends State<SearchTextField<T>> {
       crossAxisAlignment: .start,
       mainAxisSize: .min,
       children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            return MenuTheme(
-              data: AppSearchTheme.menu,
-              child: MenuAnchor(
-                controller: _menuController,
-                builder: (context, controller, child) {
-                  return GlassContainer(
-                    bordered: controller.isOpen,
-                    radius: AppCorners.xl,
-                    child: SearchBar(
-                      focusNode: _searchNode,
-                      controller: _searchController,
-                      hintText: widget.hintText,
-                      trailing: [_buildIconOrLoader()],
-                      onTap: () => controller.open(),
-                      onChanged: (value) {
-                        controller.open();
-                        widget.onChanged?.call(value);
+        TapRegion(
+          onTapOutside: (_) => _searchNode.unfocus(),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return MenuTheme(
+                data: AppSearchTheme.menu,
+                child: MenuAnchor(
+                  controller: _menuController,
+                  builder: (context, controller, child) {
+                    return GlassContainer(
+                      bordered: controller.isOpen,
+                      radius: AppCorners.xl,
+                      child: SearchBar(
+                        focusNode: _searchNode,
+                        controller: _searchController,
+                        hintText: widget.hintText,
+                        trailing: [_buildIconOrLoader()],
+                        onTap: () => controller.open(),
+                        onChanged: (value) {
+                          controller.open();
+                          widget.onChanged?.call(value);
+                        },
+                      ),
+                    );
+                  },
+                  menuChildren: [
+                    SearchSuggestions<T>(
+                      displayItemText: widget.displaySuggestionText,
+                      suggestions: widget.suggestions,
+                      onTap: (item) {
+                        widget.onSelect?.call(item);
+                        _searchController.text = widget.displaySelectionText(
+                          item,
+                        );
+                        _searchNode.unfocus();
+                        _menuController.close();
                       },
+                      maxWidth: constraints.maxWidth,
                     ),
-                  );
-                },
-                menuChildren: [
-                  SearchSuggestions<T>(
-                    displayItemText: widget.displaySuggestionText,
-                    suggestions: widget.suggestions,
-                    onTap: (item) {
-                      widget.onSelect?.call(item);
-                      _searchController.text = widget.displaySelectionText(item);
-                      _searchNode.unfocus();
-                      _menuController.close();
-                    },
-                    maxWidth: constraints.maxWidth,
-                  ),
-                ],
-              ),
-            );
-          },
+                  ],
+                ),
+              );
+            },
+          ),
         ),
         if (widget.errorMessage.isNotEmpty)
           Text(
