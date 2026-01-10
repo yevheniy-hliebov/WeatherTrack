@@ -21,7 +21,7 @@ class SearchSuggestions<T> extends StatelessWidget {
     return GlassContainer(
       bordered: true,
       radius: AppCorners.xl,
-      constraints: BoxConstraints(maxWidth: maxWidth, maxHeight: 240),
+      constraints: BoxConstraints(maxWidth: maxWidth),
       child: _buildList(),
     );
   }
@@ -30,7 +30,7 @@ class SearchSuggestions<T> extends StatelessWidget {
     final ScrollController scrollController = ScrollController();
     if (suggestions.length > 5) {
       return SizedBox(
-        height: 240,
+        height: 280,
         child: RawScrollbar(
           controller: scrollController,
           child: ListView.builder(
