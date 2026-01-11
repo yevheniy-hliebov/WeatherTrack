@@ -1,4 +1,4 @@
-abstract class ImagePaths {
+class ImagePaths {
   ImagePaths._();
 
   static const String _assets = 'assets/images';

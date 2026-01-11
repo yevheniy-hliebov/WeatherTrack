@@ -1,4 +1,4 @@
-abstract class Api {
+class Api {
   Api._();
   
   static final WeatherApi weather = WeatherApi();
