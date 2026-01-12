@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:weathertrack/features/city_history/data/city_history_repository.dart';
 import 'package:weathertrack/features/city_history/presentation/providers/city_history_state.dart';
-import 'package:weathertrack/features/city_search/data/city_model.dart';
+import 'package:weathertrack/common/models/city_model.dart';
 
 class CityHistoryProvider extends ChangeNotifier {
   final CityHistoryRepository _repository;

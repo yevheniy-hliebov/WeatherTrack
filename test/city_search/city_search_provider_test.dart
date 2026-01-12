@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:weathertrack/features/city_search/data/city_model.dart';
+import 'package:weathertrack/common/models/city_model.dart';
 import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
 import 'package:weathertrack/features/city_search/data/city_search_repository.dart';
 import 'package:weathertrack/features/city_search/presentation/providers/city_search_provider.dart';
