@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:weathertrack/core/constants/api.dart';
 import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
-import 'package:weathertrack/features/city_search/data/city_model.dart';
+import 'package:weathertrack/common/models/city_model.dart';
 
 class CitySearchRepository {
   final http.Client client;

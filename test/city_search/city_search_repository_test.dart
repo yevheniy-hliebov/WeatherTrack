@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:weathertrack/features/city_search/data/city_model.dart';
+import 'package:weathertrack/common/models/city_model.dart';
 import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
 import 'package:weathertrack/features/city_search/data/city_search_repository.dart';
 

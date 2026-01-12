@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathertrack/core/constants/spacing.dart';
 import 'package:weathertrack/features/city_history/presentation/widgets/city_chip.dart';
-import 'package:weathertrack/features/city_search/data/city_model.dart';
+import 'package:weathertrack/common/models/city_model.dart';
 
 class CityHistoryList extends StatelessWidget {
   final CityModel? selectedCity;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weathertrack/common/widgets/search_text_field.dart';
-import 'package:weathertrack/features/city_search/data/city_model.dart';
+import 'package:weathertrack/common/models/city_model.dart';
 import 'package:weathertrack/features/city_search/presentation/providers/city_search_provider.dart';
 
 class CitySearchBar extends StatelessWidget {

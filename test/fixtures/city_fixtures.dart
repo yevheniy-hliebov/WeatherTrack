@@ -1,4 +1,4 @@
-import 'package:weathertrack/features/city_search/data/city_model.dart';
+import 'package:weathertrack/common/models/city_model.dart';
 
 class CityFixtures {
   static final mockResponse = {
