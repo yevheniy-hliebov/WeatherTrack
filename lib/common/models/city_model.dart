@@ -1,16 +1,16 @@
+import 'package:weathertrack/common/models/coordinate.dart';
+
 class CityModel {
   final int id;
   final String name;
   final String countryCode;
-  final double latitude;
-  final double longitude;
+  final Coordinate coordinates;
 
   const CityModel({
     required this.id,
     required this.name,
     required this.countryCode,
-    required this.latitude,
-    required this.longitude,
+    required this.coordinates,
   });
 
   String get nameAndCountryCode => '$name, ${countryCode.toUpperCase()}';
@@ -20,8 +20,10 @@ class CityModel {
       id: int.parse(json['id'].toString()),
       name: json['name'],
       countryCode: json['countryCode'],
-      latitude: double.parse(json['latitude'].toString()),
-      longitude: double.parse(json['longitude'].toString()),
+      coordinates: Coordinate(
+        latitude: double.parse(json['latitude'].toString()),
+        longitude: double.parse(json['longitude'].toString()),
+      ),
     );
   }
 
@@ -34,8 +36,8 @@ class CityModel {
       'id': id,
       'name': name,
       'countryCode': countryCode,
-      'latitude': latitude,
-      'longitude': longitude,
+      'latitude': coordinates.latitude,
+      'longitude': coordinates.longitude,
     };
   }
 }

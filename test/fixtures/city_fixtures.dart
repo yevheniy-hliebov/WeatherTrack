@@ -1,4 +1,5 @@
 import 'package:weathertrack/common/models/city_model.dart';
+import 'package:weathertrack/common/models/coordinate.dart';
 
 class CityFixtures {
   static final mockResponse = {
@@ -29,8 +30,7 @@ class CityFixtures {
       id: i + 10,
       name: 'City $i',
       countryCode: 'FC',
-      latitude: i * 1.1,
-      longitude: i * 2.2,
+      coordinates: Coordinate(latitude: i * 1.1, longitude: i * 2.2),
     );
   });
 }
