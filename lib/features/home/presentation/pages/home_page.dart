@@ -16,6 +16,15 @@ class HomePage extends StatelessWidget {
     return AppBackground(
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Center(
+            child: Text(
+              'WeatherTrack',
+              style: TextTheme.of(context).titleLarge,
+            ),
+          ),
+        ),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(Spacing.md),
