@@ -5,6 +5,7 @@ import 'package:weathertrack/core/constants/spacing.dart';
 import 'package:weathertrack/features/city_history/presentation/providers/city_history_provider.dart';
 import 'package:weathertrack/features/city_history/presentation/widgets/city_search_history.dart';
 import 'package:weathertrack/features/city_search/presentation/widgets/city_search_bar.dart';
+import 'package:weathertrack/features/home/presentation/widgets/api_links.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,6 +36,8 @@ class HomePage extends StatelessWidget {
                   onSelect: (city) => historyProvider.addToHistory(city),
                 ),
                 const CitySearchHistory(),
+                const SizedBox(height: Spacing.xl),
+                const ApiLinks(),
               ],
             ),
           ),
