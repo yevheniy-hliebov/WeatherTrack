@@ -9,7 +9,8 @@ import 'package:weathertrack/common/models/city_model.dart';
 class CitySearchRepository {
   final http.Client client;
 
-  CitySearchRepository({http.Client? client}) : client = client ?? http.Client();
+  CitySearchRepository({http.Client? client})
+    : client = client ?? http.Client();
 
   Future<List<CityModel>> fetch(String namePrefix) async {
     final uri = Uri.parse('${Api.geo.url}/cities').replace(
@@ -20,10 +21,9 @@ class CitySearchRepository {
     );
 
     try {
-      final response = await client.get(
-        uri,
-        headers: {'X-RapidAPI-Key': Api.geo.xRapidapiKey},
-      );
+      final response = await client
+          .get(uri, headers: {'X-RapidAPI-Key': Api.geo.xRapidapiKey})
+          .timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
         String decodedString = utf8.decode(response.bodyBytes);

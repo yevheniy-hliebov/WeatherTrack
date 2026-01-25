@@ -1,1 +1,1 @@
-enum NetworkExceptionType { network, server, notFound, unknown }
+enum NetworkExceptionType { network, server, unauthorized, notFound, unknown }
