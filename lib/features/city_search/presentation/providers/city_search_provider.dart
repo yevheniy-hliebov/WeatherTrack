@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
+import 'package:weathertrack/common/exceptions/network_exception.dart';
 import 'package:weathertrack/features/city_search/data/city_search_repository.dart';
 import 'package:weathertrack/features/city_search/presentation/providers/city_search_state.dart';
 
@@ -37,7 +37,7 @@ class CitySearchProvider extends ChangeNotifier {
     try {
       final results = await _repository.fetch(query);
       _updateState(state.copyWith(cities: results, isLoading: false));
-    } on CitySearchException catch (e) {
+    } on NetworkException catch (e) {
       _updateState(
         state.copyWith(isLoading: false, errorMessage: e.message, cities: []),
       );

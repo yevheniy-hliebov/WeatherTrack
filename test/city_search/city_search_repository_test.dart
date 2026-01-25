@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
+import 'package:weathertrack/common/exceptions/network_exception.dart';
 import 'package:weathertrack/common/models/city_model.dart';
-import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
 import 'package:weathertrack/features/city_search/data/city_search_repository.dart';
 
 import '../fixtures/city_fixtures.dart';
@@ -49,7 +49,7 @@ void main() {
     );
 
     test(
-      'should throw CitySearchException with type server when the response code is 404',
+      'should throw NetworkException with type server when the response code is 404',
       () {
         when(
           () => mockHttpClient.get(any(), headers: any(named: 'headers')),
@@ -58,10 +58,10 @@ void main() {
         expect(
           () => repository.fetch(namePrefix),
           throwsA(
-            isA<CitySearchException>().having(
+            isA<NetworkException>().having(
               (e) => e.type,
               'type',
-              CityExceptionType.server,
+              NetworkExceptionType.server,
             ),
           ),
         );
@@ -69,7 +69,7 @@ void main() {
     );
 
     test(
-      'should throw CitySearchException with type network when a SocketException occurs',
+      'should throw NetworkException with type network when a SocketException occurs',
       () async {
         when(
           () => mockHttpClient.get(any(), headers: any(named: 'headers')),
@@ -78,10 +78,10 @@ void main() {
         expect(
           () => repository.fetch(namePrefix),
           throwsA(
-            isA<CitySearchException>().having(
+            isA<NetworkException>().having(
               (e) => e.type,
               'type',
-              CityExceptionType.network,
+              NetworkExceptionType.network,
             ),
           ),
         );
@@ -89,7 +89,7 @@ void main() {
     );
 
     test(
-      'should throw CitySearchException with type unknown when parsing fails',
+      'should throw NetworkException with type unknown when parsing fails',
       () async {
         when(
           () => mockHttpClient.get(any(), headers: any(named: 'headers')),
@@ -98,10 +98,10 @@ void main() {
         expect(
           () => repository.fetch(namePrefix),
           throwsA(
-            isA<CitySearchException>().having(
+            isA<NetworkException>().having(
               (e) => e.type,
               'type',
-              CityExceptionType.unknown,
+              NetworkExceptionType.unknown,
             ),
           ),
         );

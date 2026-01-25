@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:fake_async/fake_async.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:weathertrack/common/exceptions/network_exception.dart';
 import 'package:weathertrack/common/models/city_model.dart';
-import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
 import 'package:weathertrack/features/city_search/data/city_search_repository.dart';
 import 'package:weathertrack/features/city_search/presentation/providers/city_search_provider.dart';
 
@@ -71,12 +71,12 @@ void main() {
       });
     });
 
-    test('should update state with error message on CitySearchException', () {
+    test('should update state with error message on NetworkException', () {
       fakeAsync((async) {
         const errorMsg = 'No internet connection';
         when(() => mockRepository.fetch(any())).thenThrow(
-          CitySearchException(
-            type: CityExceptionType.network,
+          NetworkException(
+            type: NetworkExceptionType.network,
             message: errorMsg,
           ),
         );

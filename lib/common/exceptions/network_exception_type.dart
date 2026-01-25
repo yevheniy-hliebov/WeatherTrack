@@ -1,0 +1,1 @@
+enum NetworkExceptionType { network, server, notFound, unknown }

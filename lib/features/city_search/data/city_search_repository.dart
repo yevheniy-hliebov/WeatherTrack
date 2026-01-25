@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:weathertrack/common/exceptions/network_exception.dart';
 import 'package:weathertrack/core/constants/api.dart';
-import 'package:weathertrack/features/city_search/data/city_search_exceptions.dart';
 import 'package:weathertrack/common/models/city_model.dart';
 
 class CitySearchRepository {
@@ -30,26 +30,30 @@ class CitySearchRepository {
         final decodedResponse = jsonDecode(decodedString);
         return CityModel.fromJsonList(decodedResponse['data']);
       } else {
-        throw CitySearchException(
-          type: CityExceptionType.server,
+        throw NetworkException(
+          service: 'CitySearchRepository',
+          type: NetworkExceptionType.server,
           message: 'Server Error: ${response.statusCode}',
         );
       }
     } on SocketException {
-      throw CitySearchException(
-        type: CityExceptionType.network,
+      throw NetworkException(
+        service: 'CitySearchRepository',
+        type: NetworkExceptionType.network,
         message: 'No internet connection',
       );
     } on TimeoutException {
-      throw CitySearchException(
-        type: CityExceptionType.network,
+      throw NetworkException(
+        service: 'CitySearchRepository',
+        type: NetworkExceptionType.network,
         message: 'Connection timed out',
       );
-    } on CitySearchException {
+    } on NetworkException {
       rethrow;
     } catch (e) {
-      throw CitySearchException(
-        type: CityExceptionType.unknown,
+      throw NetworkException(
+        service: 'CitySearchRepository',
+        type: NetworkExceptionType.unknown,
         message: e.toString(),
       );
     }
