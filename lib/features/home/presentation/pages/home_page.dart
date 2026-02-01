@@ -6,6 +6,7 @@ import 'package:weathertrack/features/city_history/presentation/providers/city_h
 import 'package:weathertrack/features/city_history/presentation/widgets/city_search_history.dart';
 import 'package:weathertrack/features/city_search/presentation/widgets/city_search_bar.dart';
 import 'package:weathertrack/features/home/presentation/widgets/api_links.dart';
+import 'package:weathertrack/features/weather/presentation/widgets/weather_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -36,6 +37,8 @@ class HomePage extends StatelessWidget {
                   onSelect: (city) => historyProvider.addToHistory(city),
                 ),
                 const CitySearchHistory(),
+                const SizedBox(height: Spacing.xl),
+                WeatherContainer(city: 'Dnipro, UA'),
                 const SizedBox(height: Spacing.xl),
                 const ApiLinks(),
               ],

@@ -6,7 +6,7 @@ abstract class AppTextTheme {
   static TextTheme get text => TextTheme(
     titleLarge: const TextStyle().copyWith(color: AppColors.text),
     titleMedium: const TextStyle().copyWith(color: AppColors.text),
-    headlineMedium: const TextStyle().copyWith(color: AppColors.text),
+    headlineMedium: const TextStyle().copyWith(fontSize: 28, color: AppColors.text),
     headlineSmall: const TextStyle(
       fontSize: 16,
       fontWeight: FontWeight.w500,
